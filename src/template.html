@@ -7,16 +7,23 @@
 </head>
 
 <body>
-  <header>
-    <img src="<%=require('/src/images/m4j.jpg')%>">
-  </header>
-  <div id="root"></div>
-  <div class="gallery">
+  <div class="nav">
+    <div class="nav-header">
+      <div class="logo-image" id="logo-navbar">
+        <img src="<%=require('/src/images/m4j.jpg')%>" alt="Logo image">
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="//github.com/MadaPas/Gallery-M4J" target="_blank">Github</a>
+    </div>
   </div>
 
-
+  <div class="container">
+    <div id="root"></div>
+    <div class="gallery">
+    </div>
   </div>
-
+  </div>
   <footer>
     <a href="https://github.com" target="_blank"><i class="fa fa-github"></i></a>
   </footer>
