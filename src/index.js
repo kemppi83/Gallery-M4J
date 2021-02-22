@@ -32,13 +32,14 @@ fetch('https://api.unsplash.com/search/photos/?query=coffee', {
     }),
   }).then(res => res.json())
   .then(data => {
-    data.results.forEach(i => {
+    data.results.forEach(item => {
       let divContainer = document.createElement('div');
       let imageElement = document.createElement('img');
       imageElement.classList.add("gallery-image");
-
-      imageElement.src = i.urls.thumb;
       divContainer.classList.add("gallery-item");
+
+      imageElement.src = item.urls.thumb;
+      
       gallery.append(divContainer);
       divContainer.append(imageElement);
     })
