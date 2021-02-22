@@ -1,18 +1,20 @@
-// Test import of a JavaScript function
-import { example } from './js/example'
+import example from './images/design.jpg'
+import exampleSvg from './images/Freesample.svg'
+import './styles/main.scss'
 
-// Test import of an asset
-import webpackLogo from './images/webpack-logo.svg'
+// Create a class property without a constructor
+class Game {
+  name = 'Violin Charades'
+}
+const myGame = new Game()
+// Create paragraph node
+const p = document.createElement('p')
+p.textContent = `I like ${myGame.name}.`
 
-// Test import of styles
-import './styles/index.scss'
-
-// Appending to the DOM
-const logo = document.createElement('img')
-logo.src = webpackLogo
-
+// Create heading node
 const heading = document.createElement('h1')
-heading.textContent = example()
+heading.textContent = 'Interesting!'
 
+// Append SVG and heading nodes to the DOM
 const app = document.querySelector('#root')
-app.append(logo, heading)
+app.append(heading, p)
