@@ -25,23 +25,61 @@ const gallery = document.querySelector('.gallery')
 
 app.append(heading, p)
 
-fetch('https://api.unsplash.com/search/photos/?query=coffee', {
+const form = document.getElementById('form');
+const focus = document.querySelector('input[type="text"]');
+
+const getImages = query => {
+  gallery.textContent = '';
+  fetch(`https://api.unsplash.com/search/photos/?query=${query}`, {
     method: 'get',
     headers: new Headers({
       'Authorization': 'Client-ID 7jyECUn10SXnlPckNM81J2cgCIo_X6_t1YLkJ1yfoH4',
     }),
-  }).then(res => res.json())
-  .then(data => {
-    data.results.forEach(item => {
-      let divContainer = document.createElement('div');
-      let imageElement = document.createElement('img');
-      imageElement.classList.add("gallery-image");
-      divContainer.classList.add("gallery-item");
+    }).then(res => res.json())
+    .then(data => {
+      data.results.forEach(item => {
+        let divContainer = document.createElement('div');
+        let imageElement = document.createElement('img');
+        imageElement.classList.add("gallery-image");
+        divContainer.classList.add("gallery-item");
 
-      imageElement.src = item.urls.thumb;
-      
-      gallery.append(divContainer);
-      divContainer.append(imageElement);
-    })
+        imageElement.src = item.urls.thumb;
+        
+        gallery.append(divContainer);
+        divContainer.append(imageElement);
+      })
+  });
+};
 
-  })
+
+form.addEventListener('submit', event => {
+  const formData = new FormData(event.target);
+  console.log(typeof formData.get('search'));
+  const query = formData.get('search');
+  getImages(query);
+  event.preventDefault();
+  
+  const hist = [];
+  if (window.localStorage.getItem('search') != null) {
+    hist.push( ...JSON.parse(window.localStorage.getItem('search')));
+  }
+  if(!hist.some(e => e === query)) {
+    hist.push(query);
+  }
+  // console.log(hist, '%%%%%%%%%%%%%');
+  window.localStorage.setItem('search', JSON.stringify(hist));
+});
+
+focus.addEventListener('focus', (event) => {
+  console.log(window.localStorage.getItem('search'), window.localStorage.getItem('search') == null, '&&&&&');
+  document.getElementById('datalist').innerHTML = '';
+  if (window.localStorage.getItem('search') != null) {
+    const searchArray = JSON.parse(window.localStorage.getItem('search'));
+    searchArray.forEach(i => {
+      const node = document.createElement("option"); 
+      const val = document.createTextNode(i); 
+      node.appendChild(val);
+      document.getElementById("datalist").appendChild(node); 
+    });
+  }
+});
