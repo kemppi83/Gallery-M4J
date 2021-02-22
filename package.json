@@ -1,0 +1,23 @@
+{
+  "name": "winter21-gallery",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "restart": "NODE_ENV=development nodemon server.js",
+    "lint": "eslint .",
+    "test": "jest --config jest.config.json",
+    "watch": "jest --config jest.config.json --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saltsthlm/winter21-gallery.git"
+  },
+  "author": "M4J",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saltsthlm/winter21-gallery/issues"
+  },
+  "homepage": "https://github.com/saltsthlm/winter21-gallery#readme"
+}
