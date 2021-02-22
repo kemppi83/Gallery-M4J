@@ -25,7 +25,7 @@ const gallery = document.querySelector('.gallery')
 
 app.append(heading, p)
 
-fetch('https://api.unsplash.com/search/photos/?query=coffee', {
+fetch('https://api.unsplash.com/search/photos/?query=colorful', {
     method: 'get',
     headers: new Headers({
       'Authorization': 'Client-ID 7jyECUn10SXnlPckNM81J2cgCIo_X6_t1YLkJ1yfoH4',
@@ -33,15 +33,9 @@ fetch('https://api.unsplash.com/search/photos/?query=coffee', {
   }).then(res => res.json())
   .then(data => {
     data.results.forEach(item => {
-      let divContainer = document.createElement('div');
       let imageElement = document.createElement('img');
-      imageElement.classList.add("gallery-image");
-      divContainer.classList.add("gallery-item");
-
       imageElement.src = item.urls.thumb;
-
-      gallery.append(divContainer);
-      divContainer.append(imageElement);
+      gallery.append(imageElement);
     })
 
   })
