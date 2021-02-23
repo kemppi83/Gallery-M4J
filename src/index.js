@@ -4,7 +4,7 @@ import {
   import example from './images/design.jpg'
   import exampleSvg from './images/Freesample.svg'
   import logo from './images/m4j.jpg'
-  import './styles/main';
+  import './styles/main'
   
   // Create a class property without a constructor
   class Game {
