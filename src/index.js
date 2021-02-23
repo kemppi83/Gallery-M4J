@@ -38,15 +38,9 @@ const getImages = query => {
     }).then(res => res.json())
     .then(data => {
       data.results.forEach(item => {
-        let divContainer = document.createElement('div');
         let imageElement = document.createElement('img');
-        imageElement.classList.add("gallery-image");
-        divContainer.classList.add("gallery-item");
-
         imageElement.src = item.urls.thumb;
-        
-        gallery.append(divContainer);
-        divContainer.append(imageElement);
+        gallery.append(imageElement);
       })
   });
 };
