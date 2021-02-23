@@ -1,0 +1,21 @@
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  background: #14213d;
+  padding: 20px;
+}
+
+.gallery img {
+  object-fit: cover;
+  display: flex;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  transition: all 300ms ease-out;
+  filter: grayscale(1);
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+  filter: grayscale(0);
+}

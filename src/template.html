@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script src="https://kit.fontawesome.com/c27d1e7ceb.js" crossorigin="anonymous"></script>
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+  <div class="nav">
+    <div class="nav-header">
+      <div class="logo-image" id="logo-navbar">
+        <img src="<%=require('/src/images/m4j.jpg')%>" alt="Logo image">
+      </div>
+    </div>
+  </div>
+  <div id="root"></div>
+
+  <form id="form" autocomplete="off">
+    <input type="text" name="search" placeholder="Search" list="datalist">
+    <datalist id="datalist"></datalist>
+    <input type="submit" style="display: none" />
+  </form>
+
+  <div class="gallery"></div>
+  <div class="buttons">
+    <button class="first-button" disabled>First</button>
+    <button class="prev-button" disabled>Previous</button>
+    <button class="next-button" disabled>Next</button>
+    <button class="last-button" disabled>Last</button>
+
+  </div>
+  <footer>
+    <a href="https://github.com" target="_blank"><i class="fa fa-github"></i></a>
+  </footer>
+</body>
+
+</html>

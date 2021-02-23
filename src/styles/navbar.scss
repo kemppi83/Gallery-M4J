@@ -1,0 +1,21 @@
+.nav {
+  height: 50px;
+  width: 100%;
+  background-color:#1d3557;
+  position: relative;
+}
+
+.nav>.nav-header {
+  display: inline;
+  display: inline-block;
+  font-size: 22px;
+  color: #9f9f9f;
+  padding: 10px 10px 10px 10px;
+}
+
+#logo-navbar img {
+  display: block;
+  width: 40px;
+  height: 40px;
+  padding-bottom: 5px;
+}
