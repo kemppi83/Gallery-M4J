@@ -4,11 +4,14 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "restart": "NODE_ENV=development nodemon server.js",
-    "lint": "eslint .",
-    "test": "jest --config jest.config.json",
-    "watch": "jest --config jest.config.json --watch"
+    "build": "webpack",
+    "start": "webpack serve",
+    "lint": "eslint '**/*.js'",
+    "lint-watch": "nodemon --exec 'npm run lint --silent'",
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "eslint-config-salt": "^1.1.0"
   },
   "repository": {
     "type": "git",
