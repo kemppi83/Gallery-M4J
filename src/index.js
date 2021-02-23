@@ -54,4 +54,3 @@ nextButton.addEventListener('click', () => {
 lastButton.addEventListener('click', () => {
   helper.getImages(lastButton.value);
 });
-
