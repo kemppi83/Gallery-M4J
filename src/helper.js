@@ -16,22 +16,26 @@ const populateButton = links => {
   disableButtons();
   links.forEach(link => {
     if (/last/.test(link)) {
-      lastButton.value = link.match(/(?<=<)(.*)(?=>)/)[0];
+      const bLink = link.match(/(?<=<)(.*)(?=>)/)[0];
+      lastButton.value = bLink;
       lastButton.disabled = false;
     }
 
     if (/next/.test(link)) {
-      nextButton.value = link.match(/(?<=<)(.*)(?=>)/)[0];
+      const bLink = link.match(/(?<=<)(.*)(?=>)/)[0];
+      nextButton.value = bLink;
       nextButton.disabled = false;
     }
 
     if (/prev/.test(link)) {
-      prevButton.value = link.match(/(?<=<)(.*)(?=>)/)[0];
+      const bLink = link.match(/(?<=<)(.*)(?=>)/)[0];
+      prevButton.value = bLink;
       prevButton.disabled = false;
     }
 
     if (/first/.test(link)) {
-      firstButton.value = link.match(/(?<=<)(.*)(?=>)/)[0];
+      const bLink = link.match(/(?<=<)(.*)(?=>)/)[0];
+      firstButton.value = bLink;
       firstButton.disabled = false;
     }
   });
