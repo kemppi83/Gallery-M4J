@@ -39,3 +39,7 @@
 //   const element = dom.window.document.querySelector('.buttons');
 //   expect(element.innerHTML).toEqual(expected);
 // });
+
+test('shpuld pass', () => {
+  expect(1).toEqual(1);
+});
