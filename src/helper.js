@@ -64,4 +64,3 @@ const getImages = url => {
 module.exports.getImages = getImages;
 module.exports.populateButton = populateButton;
 module.exports.disableButtons = disableButtons;
-
