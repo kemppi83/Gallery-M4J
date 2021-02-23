@@ -35,9 +35,7 @@ const getImages = query => {
     }),
   }).then(res => {
     const links = res.headers.get('Link').split(',');
-    // console.log(links[0], '======0');
     links.forEach(link => {
-    //   console.log(link)
       if (/last/.test(link)) {
         let lastButton = document.createElement('button');
         lastButton.classList.add('last-button');
@@ -104,7 +102,6 @@ const getImages = query => {
 
 form.addEventListener('submit', event => {
   const formData = new FormData(event.target);
-  // console.log(typeof formData.get('search'));
   const query = formData.get('search');
   getImages(`https://api.unsplash.com/search/photos/?query=${query}`);
   event.preventDefault();
@@ -120,7 +117,6 @@ form.addEventListener('submit', event => {
 });
 
 focus.addEventListener('focus', (event) => {
-  // console.log(window.localStorage.getItem('search'), window.localStorage.getItem('search') == null, '&&&&&');
   document.getElementById('datalist').innerHTML = '';
   if (window.localStorage.getItem('search') != null) {
     const searchArray = JSON.parse(window.localStorage.getItem('search'));
