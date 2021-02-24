@@ -9,13 +9,52 @@
   object-fit: cover;
   display: flex;
   width: 300px;
-  height: 300px;
-  margin: 10px;
-  transition: all 300ms ease-out;
-  filter: grayscale(1);
+  height: 200px;
 }
 
-.gallery img:hover {
-  transform: scale(1.1);
-  filter: grayscale(0);
+.flip-box {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* 3D effect */
+  margin: 10px;
+}
+
+/* position the front and back side */
+.flip-box-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box:hover .flip-box-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-box-front,
+.flip-box-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* For Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-box-front {
+  background-color: #13315c;
+  color: black;
+}
+
+/* Style the back side */
+.flip-box-back {
+  background-color: #13315c;
+  color: white;
+  transform: rotateY(180deg);
 }

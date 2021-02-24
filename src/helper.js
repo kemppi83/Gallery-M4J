@@ -12,6 +12,22 @@ const disableButtons = buttons => {
   changeButtons.last.value = '';
 };
 
+// const createBoxes = () => {
+//   const flipBox = document.createElement('div');
+//   flipBox.className = 'flip-box';
+//   const flipBoxInner = document.createElement('div');
+//   flipBoxInner.className = 'flip-box-inner';
+//   const flipBoxFront = document.createElement('div');
+//   flipBoxFront.className = 'flip-box-front';
+//   const flipBoxBack = document.createElement('div');
+//   flipBoxBack.className = 'flip-box-back';
+
+//   flipBoxFront.append(flipBoxBack);
+//   flipBoxInner.append(flipBoxFront);
+//   flipBox.append(flipBoxInner);
+//   gallery.append(flipBox);
+// };
+
 const populateButton = (links, buttons) => {
   disableButtons(buttons);
   links.forEach(link => {
@@ -42,9 +58,23 @@ const getImages = url => {
     return res.json();
   }).then(data => {
     data.results.forEach(item => {
+      const flipBox = document.createElement('div');
+      flipBox.className = 'flip-box';
+      const flipBoxInner = document.createElement('div');
+      flipBoxInner.className = 'flip-box-inner';
+      const flipBoxFront = document.createElement('div');
+      flipBoxFront.className = 'flip-box-front';
+      const flipBoxBack = document.createElement('div');
+      flipBoxBack.className = 'flip-box-back';
+
+      flipBoxInner.append(flipBoxBack);
+      flipBoxInner.append(flipBoxFront);
+      flipBox.append(flipBoxInner);
+      gallery.append(flipBox);
+
       const imageElement = document.createElement('img');
       imageElement.src = item.urls.thumb;
-      gallery.append(imageElement);
+      flipBoxFront.append(imageElement);
     });
   });
 };
