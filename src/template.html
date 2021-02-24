@@ -3,6 +3,7 @@
 
 <head>
   <script src="https://kit.fontawesome.com/c27d1e7ceb.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
 
@@ -14,9 +15,8 @@
       </div>
     </div>
   </div>
-  <div id="root"></div>
 
-  <form id="form" autocomplete="off">
+  <form class="form" autocomplete="off">
     <input type="text" name="search" placeholder="Search" list="datalist">
     <datalist id="datalist"></datalist>
     <input type="submit" style="display: none" />
@@ -24,14 +24,14 @@
 
   <div class="gallery"></div>
   <div class="buttons">
-    <button class="first-button" disabled>First</button>
-    <button class="prev-button" disabled>Previous</button>
-    <button class="next-button" disabled>Next</button>
-    <button class="last-button" disabled>Last</button>
+    <button class="button first-button disabled"><<</button>
+    <button class="button prev-button disabled"><</button>
+    <button class="button next-button disabled">></button>
+    <button class="button last-button disabled">>></button>
 
   </div>
   <footer>
-    <a href="https://github.com" target="_blank"><i class="fa fa-github"></i></a>
+      <a href="https://github.com/kemppi83/Gallery-M4J" target="_blank"><i class="fa fa-github"></i></a>
   </footer>
 </body>
 

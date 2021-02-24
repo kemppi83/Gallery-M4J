@@ -1,7 +1,6 @@
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  background: #14213d;
   padding: 20px;
 }
 
@@ -17,11 +16,10 @@
   width: 300px;
   height: 200px;
   border: 1px solid #f1f1f1;
-  perspective: 1000px; /* 3D effect */
+  perspective: 1000px;
   margin: 10px;
 }
 
-/* position the front and back side */
 .flip-box-inner {
   position: relative;
   width: 100%;
@@ -31,30 +29,47 @@
   transform-style: preserve-3d;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-box:hover .flip-box-inner {
   transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
 .flip-box-front,
 .flip-box-back {
   position: absolute;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* For Safari */
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  transform: rotateX(0deg);
 }
 
-/* Style the front side (fallback if image is missing) */
 .flip-box-front {
   background-color: #13315c;
   color: black;
 }
 
-/* Style the back side */
 .flip-box-back {
   background-color: #13315c;
   color: white;
   transform: rotateY(180deg);
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button.download {
+  border-color: white;
+  width: 100px;
+}
+
+.description {
+  height: 50px;
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 }
