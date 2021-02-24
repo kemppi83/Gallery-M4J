@@ -3,7 +3,7 @@ import './helper';
 
 const helper = require('./helper');
 
-const form = document.getElementById('form');
+const form = document.querySelector('.form');
 const focus = document.querySelector('input[type="text"]');
 const firstButton = document.querySelector('.first-button');
 const prevButton = document.querySelector('.prev-button');

@@ -1,0 +1,6 @@
+* Footer -> github link centered 
+
+* BackFlip -> text design 
+
+* design Buttons 
+* input search bar styled

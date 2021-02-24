@@ -1,21 +1,18 @@
 .nav {
-  height: 50px;
+  height: 52px;
   width: 100%;
   background-color:#1d3557;
-  position: relative;
+  position: fixed;
+  z-index: 1000;
+  text-align: center;
 }
 
 .nav>.nav-header {
-  display: inline;
   display: inline-block;
-  font-size: 22px;
-  color: #9f9f9f;
-  padding: 10px 10px 10px 10px;
+  padding: 10px;
 }
 
 #logo-navbar img {
   display: block;
   width: 40px;
-  height: 40px;
-  padding-bottom: 5px;
 }

@@ -24,7 +24,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'webpack Boilerplate',
+      title: 'M4J Gallery',
       template: path.resolve(__dirname, './src/template.html'), // template file
       filename: 'index.html', // output file
     }),
