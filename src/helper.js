@@ -1,43 +1,25 @@
 const gallery = document.querySelector('.gallery');
 
-const firstButton = document.querySelector('.first-button');
-const prevButton = document.querySelector('.prev-button');
-const nextButton = document.querySelector('.next-button');
-const lastButton = document.querySelector('.last-button');
-
-const disableButtons = () => {
-  lastButton.disabled = true;
-  nextButton.disabled = true;
-  prevButton.disabled = true;
-  firstButton.disabled = true;
+const disableButtons = buttons => {
+  const changeButtons = { ...buttons };
+  changeButtons.first.disabled = true;
+  changeButtons.first.value = '';
+  changeButtons.prev.disabled = true;
+  changeButtons.prev.value = '';
+  changeButtons.next.disabled = true;
+  changeButtons.next.value = '';
+  changeButtons.last.disabled = true;
+  changeButtons.last.value = '';
 };
 
-const populateButton = links => {
-  disableButtons();
+const populateButton = (links, buttons) => {
+  disableButtons(buttons);
   links.forEach(link => {
-    if (/last/.test(link)) {
-      const bLink = link.match(/(?<=<)(.*)(?=>)/)[0];
-      lastButton.value = bLink;
-      lastButton.disabled = false;
-    }
-
-    if (/next/.test(link)) {
-      const bLink = link.match(/(?<=<)(.*)(?=>)/)[0];
-      nextButton.value = bLink;
-      nextButton.disabled = false;
-    }
-
-    if (/prev/.test(link)) {
-      const bLink = link.match(/(?<=<)(.*)(?=>)/)[0];
-      prevButton.value = bLink;
-      prevButton.disabled = false;
-    }
-
-    if (/first/.test(link)) {
-      const bLink = link.match(/(?<=<)(.*)(?=>)/)[0];
-      firstButton.value = bLink;
-      firstButton.disabled = false;
-    }
+    const rel = link.match(/(?<=rel=")(.*)(?=")/)[0];
+    const button = buttons[rel];
+    const url = link.match(/(?<=<)(.*)(?=>)/)[0];
+    button.value = url;
+    button.disabled = false;
   });
 };
 
@@ -50,7 +32,13 @@ const getImages = url => {
     }),
   }).then(res => {
     const links = res.headers.get('Link').split(',');
-    populateButton(links);
+    const buttons = {
+      first: document.querySelector('.first-button'),
+      prev: document.querySelector('.prev-button'),
+      next: document.querySelector('.next-button'),
+      last: document.querySelector('.last-button'),
+    };
+    populateButton(links, buttons);
     return res.json();
   }).then(data => {
     data.results.forEach(item => {
@@ -61,6 +49,32 @@ const getImages = url => {
   });
 };
 
+const setHistory = (storage, search) => {
+  const hist = [];
+  if (storage.getItem('search') != null) {
+    hist.push(...JSON.parse(storage.getItem('search')));
+  }
+  if (!hist.some(e => e === search)) {
+    hist.push(search);
+  }
+  storage.setItem('search', JSON.stringify(hist));
+};
+
+const setDatalist = storage => {
+  document.getElementById('datalist').innerHTML = '';
+  if (storage.getItem('search') != null) {
+    const searchArray = JSON.parse(storage.getItem('search'));
+    searchArray.forEach(i => {
+      const node = document.createElement('option');
+      const val = document.createTextNode(i);
+      node.appendChild(val);
+      document.getElementById('datalist').appendChild(node);
+    });
+  }
+};
+
 module.exports.getImages = getImages;
 module.exports.populateButton = populateButton;
 module.exports.disableButtons = disableButtons;
+module.exports.setHistory = setHistory;
+module.exports.setDatalist = setDatalist;

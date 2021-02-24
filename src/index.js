@@ -11,32 +11,16 @@ const nextButton = document.querySelector('.next-button');
 const lastButton = document.querySelector('.last-button');
 
 form.addEventListener('submit', event => {
-  const formData = new FormData(event.target);
-  const query = formData.get('search');
-  helper.getImages(`https://api.unsplash.com/search/photos/?query=${query}`);
   event.preventDefault();
-
-  const hist = [];
-  if (window.localStorage.getItem('search') != null) {
-    hist.push(...JSON.parse(window.localStorage.getItem('search')));
-  }
-  if (!hist.some(e => e === query)) {
-    hist.push(query);
-  }
-  window.localStorage.setItem('search', JSON.stringify(hist));
+  const formData = new FormData(event.target);
+  const search = formData.get('search');
+  const url = `https://api.unsplash.com/search/photos/?query=${search}`;
+  helper.getImages(url);
+  helper.setHistory(window.localStorage, search);
 });
 
 focus.addEventListener('focus', () => {
-  document.getElementById('datalist').innerHTML = '';
-  if (window.localStorage.getItem('search') != null) {
-    const searchArray = JSON.parse(window.localStorage.getItem('search'));
-    searchArray.forEach(i => {
-      const node = document.createElement('option');
-      const val = document.createTextNode(i);
-      node.appendChild(val);
-      document.getElementById('datalist').appendChild(node);
-    });
-  }
+  helper.setDatalist(window.localStorage);
 });
 
 firstButton.addEventListener('click', () => {
