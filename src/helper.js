@@ -59,6 +59,7 @@ const getImages = url => {
     populateButton(links, buttons);
     return res.json();
   }).then(data => {
+    console.log(data, '€€€€€€€€');
     data.results.forEach(item => {
       const [flipBoxFront, flipBoxBack] = createBoxes();
 
