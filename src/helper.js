@@ -69,7 +69,7 @@ const getImages = url => {
 
       const imageAuthor = document.createElement('a');
       imageAuthor.className = 'author';
-      imageAuthor.innerHTML = `by ${item.user.name}`;
+      imageAuthor.innerHTML = `by ${item.user.name} <i class="fas fa-external-link-alt"></i>`;
       imageAuthor.target = '_blank';
       imageAuthor.href = item.user.portfolio_url;
 
